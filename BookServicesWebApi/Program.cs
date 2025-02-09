@@ -18,7 +18,7 @@ namespace BookServices.WebApi
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .Enrich.WithProperty("Application", APP_NAME)
+                .Enrich.WithProperty("BookServices", APP_NAME)
                 .Enrich.WithProperty("MachineName", Environment.MachineName)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
@@ -32,7 +32,7 @@ namespace BookServices.WebApi
             }
 
             builder.Host.UseSerilog((context, services, configuration) => configuration
-                .Enrich.WithProperty("Application", APP_NAME)
+                .Enrich.WithProperty("BookServices", APP_NAME)
                 .Enrich.WithProperty("MachineName", Environment.MachineName)
                 .ReadFrom.Configuration(context.Configuration)
                 .ReadFrom.Services(services)

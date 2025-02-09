@@ -12,13 +12,13 @@ namespace BookServices.WebApi.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class UserController : BaseController
+    public class UsersController : BaseController
     {
         private readonly CookieSettings? _cookieSettings;
         private readonly JwtManager _jwtManager;
         private readonly IAntiforgery _antiforgery;
 
-        public UserController(ILogger<UserController> logger,
+        public UsersController(ILogger<UsersController> logger,
             IOptions<CookieSettings> cookieSettings, JwtManager jwtManager, 
              IAntiforgery antiforgery ,IMediator mediator) : base(logger, mediator)
         {
