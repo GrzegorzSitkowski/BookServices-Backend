@@ -52,7 +52,7 @@ namespace BookServices.Application.Logic.User
                         };
                     }
                 }
-                throw new UnauthorizedAccessException();
+                throw new UnauthorizedException();
             }
             
         }
