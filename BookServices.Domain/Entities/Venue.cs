@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookServices.Domain.Entities
 {
-    public class Venues : DomainEntity
+    public class Venue : DomainEntity
     {
         public required string Name { get; set; }
         public required string Description { get; set; }

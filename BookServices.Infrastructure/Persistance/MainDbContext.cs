@@ -16,10 +16,9 @@ namespace BookServices.Infrastructure.Persistance
         }
 
         public DbSet<User> Users { get; set; }
-
         public DbSet<Account> Accounts { get; set; }
-
         public DbSet<AccountUser> AccountUsers { get; set; }
+        public DbSet<Venue> Venues { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
