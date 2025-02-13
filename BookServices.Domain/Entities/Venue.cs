@@ -9,12 +9,12 @@ namespace BookServices.Domain.Entities
 {
     public class Venue : DomainEntity
     {
-        public required string Name { get; set; }
-        public required string Description { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         public string? PhoneNumber { get; set; }
-        public required string Street { get; set; }
+        public string Street { get; set; }
         public string? PostCode { get; set; }
-        public required string City { get; set; }
+        public string City { get; set; }
         public DateTimeOffset CreateDate { get; set; } = DateTimeOffset.Now;
         public int CreatedBy { get; set; }
     }
