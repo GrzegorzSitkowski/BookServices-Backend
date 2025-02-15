@@ -17,8 +17,11 @@ namespace BookServices.Application.Logic.User
     {
         public class Request : IRequest<Result>
         {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
             public required string Email { get; set; }
             public required string Password { get; set; }
+            public string Type { get; set; }
         }
 
         public class Result
@@ -47,9 +50,12 @@ namespace BookServices.Application.Logic.User
                 var utcNow = DateTime.Now;
                 var user = new Domain.Entities.User()
                 {
+                    FirstName = request.FirstName,
+                    LastName = request.LastName,
                     RegisterDate = utcNow,
                     Email = request.Email,
                     HashedPassword = "",
+                    Type = request.Type,
                 };
 
                 user.HashedPassword = _passwordManager.HashPassword(request.Password);
