@@ -33,14 +33,14 @@ namespace BookServices.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetVenue([FromBody] GetQuery.Request model)
+        public async Task<ActionResult> GetVenue([FromQuery] GetQuery.Request model)
         {
             var data = await _mediator.Send(model);
             return Ok(data);
         }
 
         [HttpGet]
-        public async Task<ActionResult> List([FromBody] ListQuery.Request model)
+        public async Task<ActionResult> List([FromQuery] ListQuery.Request model)
         {
             var data = await _mediator.Send(model);
             return Ok(data);

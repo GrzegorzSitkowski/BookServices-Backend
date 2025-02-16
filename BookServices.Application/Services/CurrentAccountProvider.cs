@@ -25,13 +25,12 @@ namespace BookServices.Application.Services
         public async Task<int?> GetAccountId()
         {
             var userId = _authenticationDataProvider.GetUserId();
-
-            if(userId != null)
+            if (userId != null)
             {
                 return await _applicationDbContext.AccountUsers
                     .Where(au => au.UserId == userId.Value)
-                    .OrderBy(au => au.AccountId)
-                    .Select(au => (int?)au.UserId)
+                    .OrderBy(au => au.Id)
+                    .Select(au => (int?)au.AccountId)
                     .Cacheable()
                     .FirstOrDefaultAsync();
             }
@@ -42,12 +41,12 @@ namespace BookServices.Application.Services
         public async Task<Account> GetAuthenticatedAccount()
         {
             var accountId = await GetAccountId();
-            if (accountId == null) 
+            if (accountId == null)
             {
                 throw new UnauthorizedException();
             }
 
-            var account = await _applicationDbContext.Accounts.FirstOrDefaultAsync(a => a.Id == accountId.Value);
+            var account = await _applicationDbContext.Accounts.Cacheable().FirstOrDefaultAsync(a => a.Id == accountId.Value);
             if (account == null)
             {
                 throw new ErrorException("AccountDoesNotExist");
