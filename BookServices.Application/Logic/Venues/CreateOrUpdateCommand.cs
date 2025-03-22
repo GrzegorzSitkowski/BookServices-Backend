@@ -84,7 +84,7 @@ namespace BookServices.Application.Logic.Venues
                 RuleFor(x => x.Name).NotEmpty().MaximumLength(100);
                 RuleFor(x => x.Description).MaximumLength(200);
                 RuleFor(x => x.PhoneNumber).MaximumLength(20);
-                RuleFor(x => x.Street).NotEmpty().MaximumLength(20);
+                RuleFor(x => x.Street).NotEmpty().MaximumLength(100);
                 RuleFor(x => x.PostCode).MaximumLength(10);
                 RuleFor(x => x.City).NotEmpty().MaximumLength(50);
             }
