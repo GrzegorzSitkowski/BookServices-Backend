@@ -18,7 +18,6 @@ namespace BookServices.Application.Logic.Account
     {
         public class Request : IRequest<Result>
         {
-
         }
 
         public class Result
@@ -30,9 +29,9 @@ namespace BookServices.Application.Logic.Account
         {
             private readonly IAuthenticationDataProvider _authenticationDataProvider;
 
-            public Handler(ICurrentAccountProvider currentAccountProvider, 
-                IApplicationDbContext applicationDbContext) : base(currentAccountProvider, applicationDbContext)
+            public Handler(ICurrentAccountProvider currentAccountProvider, IApplicationDbContext applicationDbContext) : base(currentAccountProvider, applicationDbContext)
             {
+
             }
 
             public async Task<Result> Handle(Request request, CancellationToken cancellationToken)
@@ -41,10 +40,9 @@ namespace BookServices.Application.Logic.Account
 
                 return new Result()
                 {
-                    Name = account.Name
+                    Name = account.Name,
                 };
             }
-            
         }
 
         public class Validator : AbstractValidator<Request>
