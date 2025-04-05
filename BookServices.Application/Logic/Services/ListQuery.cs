@@ -15,7 +15,7 @@ namespace BookServices.Application.Logic.Services
     {
         public class  Request : IRequest<Result>
         {
-
+            public int? VenueId { get; set; }
         }
 
         public class Result
@@ -42,14 +42,15 @@ namespace BookServices.Application.Logic.Services
             public async Task<Result> Handle(Request request, CancellationToken cancellationToken)
             {
                 var account = await _currentAccountProvider.GetAuthenticatedAccount();
+                var venue = await _applicationDbContext.Venues.FirstOrDefaultAsync(v => v.Id == request.VenueId);
 
-                var data = await _applicationDbContext.Services.Where(v => v.CreatedBy == account.Id)
-                    .Select(v => new Result.Service()
+                var data = await _applicationDbContext.Services.Where(d => d.CreatedBy == account.Id && d.VenueId == venue.Id)
+                    .Select(d => new Result.Service()
                     {
-                        Id = v.Id,
-                        Name = v.Name,
-                        Price = v.Price,
-                        Time = v.Time
+                        Id = d.Id,
+                        Name = d.Name,
+                        Price = d.Price,
+                        Time = d.Time
                     })
                     .ToListAsync();
 
