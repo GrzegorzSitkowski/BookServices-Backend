@@ -25,6 +25,7 @@ namespace BookServices.Application.Logic.Services
             public class Service
             {
                 public required int Id { get; set; }
+                public int VenueId { get; set; }
                 public string Name { get; set; }
                 public string Price { get; set; }
                 public string Time { get; set; }
@@ -48,6 +49,7 @@ namespace BookServices.Application.Logic.Services
                     .Select(d => new Result.Service()
                     {
                         Id = d.Id,
+                        VenueId = d.VenueId,
                         Name = d.Name,
                         Price = d.Price,
                         Time = d.Time
