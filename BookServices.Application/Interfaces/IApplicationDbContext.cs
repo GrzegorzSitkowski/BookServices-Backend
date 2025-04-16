@@ -15,6 +15,7 @@ namespace BookServices.Application.Interfaces
         DbSet<AccountUser> AccountUsers { get; set; }
         DbSet<Venue> Venues { get; set; }
         DbSet<Service> Services { get; set; }
+        DbSet<Worker> Workers { get; set; }
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
